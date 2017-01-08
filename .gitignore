@@ -3,7 +3,7 @@ elpa
 *.tex
 *.pdf
 *.org#
-user/
+# user/
 sandbox
 el-get
 /html-clip-w32.py
@@ -13,3 +13,8 @@ uservar
 test
 .DS_STORE
 ltximg
+
+## some files in 'user' folder
+recentf
+projectile-bookmarks.eld
+ac-comphist.dat
