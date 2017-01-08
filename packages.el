@@ -24,11 +24,55 @@
 
   ;; I like to press enter to follow a link. mouse clicks also work.
   (setq org-return-follows-link t)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; This block is Qike's customization
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved 
   (add-hook 'org-mode-hook
 	    (lambda ()
 	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
 	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
+
+  ;; set capture templates
+  (setq org-capture-templates
+	'(("t" "Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tasks")
+	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("d" "Dailies" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Dailies")
+	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("c" "Calendar" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Calendar")
+	   "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
+	  ("p" "Projects" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Projects")
+	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
+	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("y" "CTC" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Respond to ISMB CTC Review")
+					;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("o" "OUTREACH" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Produce outreach manuscript")
+	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("l" "LussierLab" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "LussierLab")
+					;    "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("s" "Someday" entry (file "~/Dropbox/orgFiles/someday.org")
+	   "* TOFILE %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("h" "HTG" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "HTG")
+					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("r" "Tickler Scheduled Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tickler Scheduled Tasks")
+	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("f" "Financial" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Financial")
+					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("b" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
+					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+					;("d" "PHD" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org"s "PHD")
+					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("j" "Journal" entry (file+datetree "~/Dropbox/orgFiles/journal.org")
+	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
+	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
+	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
   :bind
   (("C-c l" . org-store-link)
    ("C-c L" . org-insert-link-global)
