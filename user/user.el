@@ -4,11 +4,12 @@
   ;; :diminish undo-tree-mode
   :bind (("S-SPC" . "SPC") ;shift space should be a space	 
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
-	 ("M-x" . ergoemacs-cut-line-or-region)
-	 ("C-s" . save-buffer)
 	 ("M-<" . beginning-of-buffer)
 	 ("M->" . end-of-buffer)
+	 ("M-S-z" . undo-tree-redo)
 	 ;; resolve the conflicts with swiper package
+	 ("M-x" . ergoemacs-cut-line-or-region)
+	 ("C-s" . save-buffer)
 	 ("C-f" . swiper)
 	 ("M-a" . counsel-M-x)
 	 ("C-o". counsel-find-file))
