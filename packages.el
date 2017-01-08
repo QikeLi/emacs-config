@@ -47,7 +47,8 @@
 
 
 (use-package tex
-  :ensure auctex)
+  :ensure auctex
+  :init (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2015/bin/x86_64-darwin")))
 
 
 ;; Make cursor more visible when you move a long distance
