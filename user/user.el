@@ -6,6 +6,7 @@
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
 	 ("M-x" . ergoemacs-cut-line-or-region)
 	 ("C-s" . save-buffer)
+	 ;; resolve the conflicts with swiper package
 	 ("C-f" . swiper)
 	 ("M-a" . counsel-M-x)
 	 ("C-o". counsel-find-file))
@@ -17,7 +18,16 @@
   (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
   ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
   (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-  (setq ergoemacs-keyboard-layout "us") ;; Assumes QWERTY keyboard layout
+  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  ;; this may be a temporary fix
+  (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  (setq icicle-mode t)		; this may be a temporary fix
+  (setq multiple-cursors-mode t)		; this may be a temporary fix
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
   ;;;;;;;;;;;; script in this block is experiment
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; (setq ergoemacs-mode-line nil)  ;; Does not work by just setting (diminish 'ergoemacs-mode)
@@ -38,4 +48,6 @@
 ;; 	   ("M-r" . my-delete-word)
 ;; 	   ("<menu> c" . company-complete)))
 ;; (ergoemacs-require 'extra)
+
+
 

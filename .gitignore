@@ -15,6 +15,6 @@ test
 ltximg
 
 ## some files in 'user' folder
-recentf
-projectile-bookmarks.eld
-ac-comphist.dat
+user/recentf
+user/projectile-bookmarks.eld
+user/ac-comphist.dat
