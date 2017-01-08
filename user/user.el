@@ -6,6 +6,8 @@
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
 	 ("M-x" . ergoemacs-cut-line-or-region)
 	 ("C-s" . save-buffer)
+	 ("M-<" . beginning-of-buffer)
+	 ("M->" . end-of-buffer)
 	 ;; resolve the conflicts with swiper package
 	 ("C-f" . swiper)
 	 ("M-a" . counsel-M-x)
@@ -48,6 +50,3 @@
 ;; 	   ("M-r" . my-delete-word)
 ;; 	   ("<menu> c" . company-complete)))
 ;; (ergoemacs-require 'extra)
-
-
-
