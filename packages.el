@@ -69,6 +69,20 @@
 	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
 	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
 	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)))
+  ;;;; setup Babel
+  ;; active Babel languages
+  (require 'ob-R)			;note 
+  (custom-set-variables
+   ;; specifies R language to be loaded
+   '(org-babel-load-languages (quote (
+				      (shell . t)
+				      (latex . t)
+				      (python . t)
+				      (emacs-lisp . t)
+				      (R . t))))
+   ;; Do not prompt for code evaluation
+   '(org-confirm-babel-evaluate nil))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
