@@ -24,6 +24,11 @@
 
   ;; I like to press enter to follow a link. mouse clicks also work.
   (setq org-return-follows-link t)
+  ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved 
+  (add-hook 'org-mode-hook
+	    (lambda ()
+	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
+	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
   :bind
   (("C-c l" . org-store-link)
    ("C-c L" . org-insert-link-global)
