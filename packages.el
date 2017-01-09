@@ -605,7 +605,20 @@
 (use-package scimax-utils
   :ensure nil
   :load-path scimax-dir
-  :bind ( "<f9>" . hotspots))
+  :bind ( "<f9>" . hotspots)
+  :config
+  (setq scimax-user-hotspot-commands
+	'(("Mail" . (lambda ()
+		      (browse-url "https://www.google.com/gmail")))
+	  ("Calendar" . (lambda ()
+			  (browse-url "https://www.google.com/calendar/render")))
+	  ("Contacts" . ivy-contacts)
+	  ("RSS" . elfeed)
+	  ("Twitter" . twit)
+	  ("Agenda" . (lambda () (org-agenda "" "w"))) 
+	  ("CV" . (lambda ()
+		    (org-open-file
+		     "/Users/jkitchin/Dropbox/CMU/CV and bios/kitchin_cv.docx" '(16)))))))
 
 (use-package ox-manuscript
   :ensure nil
