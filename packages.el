@@ -183,7 +183,16 @@
   (setq org-habit-graph-column 55)
   (setq org-habit-show-habits-only-for-today nil)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; set org-agenda sorting strategy
+  (setq org-agenda-sorting-strategy
+  	(quote
+  	 ((agenda time-down habit-down priority-down category-keep)
+  	  (todo priority-down category-keep)
+  	  (tags priority-down category-keep)
+  	  (search category-keep))))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
