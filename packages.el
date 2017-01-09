@@ -168,6 +168,21 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-agenda-span (quote day))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; add org-habit module
+  ;; (add-to-list 'org-modules 'org-habit t)
+  (defun qike/habit-after-load-org ()	;delay adding org-habit to org-modules after org is loaded
+    (add-to-list 'org-modules 'org-habit))
+  (eval-after-load "org" '(qike/habit-after-load-org))
+  (require 'org-habit)
+  (require 'package)
+  ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  ;; setup for org-habit
+  (setq org-todo-repeat-to-state nil)  
+  (setq org-habit-graph-column 55)
+  (setq org-habit-show-habits-only-for-today nil)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
