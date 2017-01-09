@@ -182,18 +182,25 @@
   ;; set org-agenda sorting strategy
   (setq org-agenda-sorting-strategy
   	(quote
-  	 ((agenda time-down habit-down priority-down category-keep)
+  	 ((agenda time-up habit-down priority-down category-keep)
   	  (todo priority-down category-keep)
   	  (tags priority-down category-keep)
   	  (search category-keep))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
   ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved
   ;; After using scimax, this problem doesn't seem occur anymore. Now the key for org-move-subtree-down is "M-down", and for org-move-subtree-up is <M-up>
   ;; (add-hook 'org-mode-hook
   ;; 	    (lambda ()
   ;; 	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
   ;; 	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;; set the max level of heading I can go to for refiling
+  (setq org-refile-targets (quote (("qikeMain.org" :maxlevel . 6))))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
