@@ -158,12 +158,16 @@
 (use-package gmail-message-mode)
 
 ;; * Miscellaneous
+;; ** set some variables
 ;; Turn on agenda reminder
 ;; (org-agenda-to-appt)
 ;; Everyday at 12:05am run org-agenda-to-appt(useful in case you keep Emacs always on)
 ;; (run-at-time "12:05am" (* 24 3600) 'org-agenda-to-appt)
 ;; prvent start a new frame when open a file from Mac Finder
 (setq ns-pop-up-frames nil)
+;; move files to ~/.Trash when delete
+(setq delete-by-moving-to-trash t)
+(setq trash-directory "~/.Trash")
 
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()

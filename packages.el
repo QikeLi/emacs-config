@@ -160,6 +160,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; only show only in agenda view
   (setq org-agenda-span (quote day))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -196,8 +197,10 @@
   ;; 	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
   ;; 	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+  
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; set the max level of heading I can go to for refiling
+  ;; see:https://www.reddit.com/r/emacs/comments/4366f9/how_do_orgrefiletargets_work/
   (setq org-refile-targets (quote (("qikeMain.org" :maxlevel . 6))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   
