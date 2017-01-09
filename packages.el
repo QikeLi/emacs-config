@@ -154,6 +154,15 @@
 	  (org-set-tags-to tags)))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; specify the org files to be scanned for agenda
+  (setq org-agenda-files
+	(delq nil
+	      (mapcar (lambda (x) (and (file-exists-p x) x))
+		      '("~/Dropbox/orgFiles/qikeMain.org"
+			"~/Dropbox/orgFiles/journal.org"))))
+  (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

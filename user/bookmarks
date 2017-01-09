@@ -3,8 +3,8 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/Dropbox/orgFiles/journal.org")
- (front-context-string . "**** New learnin")
- (rear-context-string . "17-01-08 Sunday\n")
- (position . 5218))
+ (filename . "~/Dropbox/orgFiles/qikeMain.org")
+ (front-context-string . "** TODO set dele")
+ (rear-context-string . "\n\n\n* Tasks [0%]\n")
+ (position . 225))
 )
