@@ -45,26 +45,27 @@
 	   "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
 	  ("p" "Projects" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Projects")
 	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
-	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("y" "CTC" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Respond to ISMB CTC Review")
-					;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("y" "CTC" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Respond to ISMB CTC Review")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
 	  ("o" "OUTREACH" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Produce outreach manuscript")
 	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("l" "LussierLab" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "LussierLab")
-					;    "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("l" "LussierLab" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "LussierLab")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
 	  ("s" "Someday" entry (file "~/Dropbox/orgFiles/someday.org")
 	   "* TOFILE %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("h" "HTG" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "HTG")
-					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("h" "HTG" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "HTG")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
 	  ("r" "Tickler Scheduled Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tickler Scheduled Tasks")
 	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("f" "Financial" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Financial")
-					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("b" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
-					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-					;("d" "PHD" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org"s "PHD")
-					;     "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("f" "Financial" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Financial")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ;; ("d" "PHD" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org"s "PHD")
+	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+	  ("n" "Notes" entry
+	   (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Temporary Notes")
+	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
 	  ("j" "Journal" entry (file+datetree "~/Dropbox/orgFiles/journal.org")
 	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
 	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
@@ -154,7 +155,7 @@
 	  (org-set-tags-to tags)))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; specify the org files to be scanned for agenda
   (setq org-agenda-files
 	(delq nil
@@ -162,7 +163,12 @@
 		      '("~/Dropbox/orgFiles/qikeMain.org"
 			"~/Dropbox/orgFiles/journal.org"))))
   (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (setq org-agenda-span (quote day))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
