@@ -1,7 +1,8 @@
-;; * set up for ergoemacs-mode
+;; * ergoemacs-mode
 (use-package ergoemacs-mode
   ;; :load-path "elpa/ergoemacs-mode/"
   ;; :diminish undo-tree-mode
+  :demand			;override package deferral
   :bind (("S-SPC" . "SPC") ;shift space should be a space	 
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
 	 ("M-<" . beginning-of-buffer)
@@ -52,7 +53,7 @@
 ;; 	   ("<menu> c" . company-complete)))
 ;; (ergoemacs-require 'extra)
 
-;; * set up for ESS
+;; * ESS
 ;; Adapted with one minor change from Felipe Salazar at
 ;; http://www.emacswiki.org/emacs/EmacsSpeaksStatistics
 (use-package ess
