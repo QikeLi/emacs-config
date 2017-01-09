@@ -155,4 +155,4 @@
   (require 'edit-server)
   (edit-server-start)
   (setq edit-server-new-frame nil))
-(se-package gmail-message-mode)
+(use-package gmail-message-mode)
