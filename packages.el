@@ -125,11 +125,39 @@
   (setq org-todo-keywords
 	'((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Preserve top level headings when archiving to a file
+  ;; copied from: http://orgmode.org/worg/org-hacks.html
+  (defun my-org-inherited-no-file-tags ()
+    (let ((tags (org-entry-get nil "ALLTAGS" 'selective))
+	  (ltags (org-entry-get nil "TAGS")))
+      (mapc (lambda (tag)
+	      (setq tags
+		    (replace-regexp-in-string (concat tag ":") "" tags)))
+	    (append org-file-tags (when ltags (split-string ltags ":" t))))
+      (if (string= ":" tags) nil tags)))
+
+  (defadvice org-archive-subtree (around my-org-archive-subtree-low-level activate)
+    (let ((tags (my-org-inherited-no-file-tags))
+	  (org-archive-location
+	   (if (save-excursion (org-back-to-heading)
+			       (> (org-outline-level) 1))
+	       (concat (car (split-string org-archive-location "::"))
+		       "::* "
+		       (car (org-get-outline-path)))
+	     org-archive-location)))
+      ad-do-it
+      (with-current-buffer (find-file-noselect (org-extract-archive-file))
+	(save-excursion
+	  (while (org-up-heading-safe))
+	  (org-set-tags-to tags)))))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
   :bind
   (("C-c l" . org-store-link)
    ("C-c L" . org-insert-link-global)
