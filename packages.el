@@ -29,47 +29,41 @@
   ;; This block is Qike's customization
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved 
-  (add-hook 'org-mode-hook
-	    (lambda ()
-	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
-	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
-
   ;; set capture templates
   (setq org-capture-templates
-	'(("t" "Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tasks")
-	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("d" "Dailies" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Dailies")
-	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("c" "Calendar" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Calendar")
-	   "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
-	  ("p" "Projects" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Projects")
-	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("y" "CTC" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Respond to ISMB CTC Review")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("o" "OUTREACH" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Produce outreach manuscript")
-	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("l" "LussierLab" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "LussierLab")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("s" "Someday" entry (file "~/Dropbox/orgFiles/someday.org")
-	   "* TOFILE %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("h" "HTG" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "HTG")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("r" "Tickler Scheduled Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tickler Scheduled Tasks")
-	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("f" "Financial" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Financial")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ;; ("d" "PHD" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org"s "PHD")
-	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("n" "Notes" entry
-	   (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Temporary Notes")
-	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-	  ("j" "Journal" entry (file+datetree "~/Dropbox/orgFiles/journal.org")
-	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
-	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
-	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)))
+  	'(("t" "Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tasks")
+  	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("d" "Dailies" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Dailies")
+  	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("c" "Calendar" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Calendar")
+  	   "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
+  	  ("p" "Projects" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Projects")
+  	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("y" "CTC" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Respond to ISMB CTC Review")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("o" "OUTREACH" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Produce outreach manuscript")
+  	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("l" "LussierLab" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "LussierLab")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("s" "Someday" entry (file "~/Dropbox/orgFiles/someday.org")
+  	   "* TOFILE %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("h" "HTG" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "HTG")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("r" "Tickler Scheduled Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tickler Scheduled Tasks")
+  	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("f" "Financial" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Financial")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ;; ("d" "PHD" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org"s "PHD")
+  	  ;;  "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("n" "Notes" entry
+  	   (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Temporary Notes")
+  	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
+  	  ("j" "Journal" entry (file+datetree "~/Dropbox/orgFiles/journal.org")
+  	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
+  	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
+  	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; setup Babel
   ;; active Babel languages
@@ -77,11 +71,11 @@
   (custom-set-variables
    ;; specifies R language to be loaded
    '(org-babel-load-languages (quote (
-				      (shell . t)
-				      (latex . t)
-				      (python . t)
-				      (emacs-lisp . t)
-				      (R . t))))
+  				      (shell . t)
+  				      (latex . t)
+  				      (python . t)
+  				      (emacs-lisp . t)
+  				      (R . t))))
    ;; Do not prompt for code evaluation
    '(org-confirm-babel-evaluate nil))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,11 +85,11 @@
   (defun sacha/org-clock-in-if-starting ()
     "Clock in when the task is marked STARTED."
     (when (and (string= org-state "STARTED")
-	       (not (string= org-last-state org-state)))
+  	       (not (string= org-last-state org-state)))
       (org-clock-in)))
 
   (add-hook 'org-after-todo-state-change-hook
-	    'sacha/org-clock-in-if-starting)
+  	    'sacha/org-clock-in-if-starting)
 
   (defadvice org-clock-in (after sacha activate)
     "Set this task's status to 'STARTED'."
@@ -104,11 +98,11 @@
   (defun sacha/org-clock-out-if-waiting ()
     "Clock in when the task is marked STARTED."
     (when (and (string= org-state "WAITING")
-	       (not (string= org-last-state org-state)))
+  	       (not (string= org-last-state org-state)))
       (org-clock-out)))
 
   (add-hook 'org-after-todo-state-change-hook
-	    'sacha/org-clock-out-if-waiting)
+  	    'sacha/org-clock-out-if-waiting)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -116,15 +110,15 @@
   (eval-after-load 'org
     '(progn
        (add-to-list 'org-structure-template-alist
-		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig_1?.pdf :width 6.75 :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+  		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig_1?.pdf :width 6.75 :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
        (add-to-list 'org-structure-template-alist
-		    '("r" "#+BEGIN_SRC R :exports both :results output :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))))
+  		    '("r" "#+BEGIN_SRC R :exports both :results output :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;TODO States
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
+  	'((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -132,36 +126,36 @@
   ;; copied from: http://orgmode.org/worg/org-hacks.html
   (defun my-org-inherited-no-file-tags ()
     (let ((tags (org-entry-get nil "ALLTAGS" 'selective))
-	  (ltags (org-entry-get nil "TAGS")))
+  	  (ltags (org-entry-get nil "TAGS")))
       (mapc (lambda (tag)
-	      (setq tags
-		    (replace-regexp-in-string (concat tag ":") "" tags)))
-	    (append org-file-tags (when ltags (split-string ltags ":" t))))
+  	      (setq tags
+  		    (replace-regexp-in-string (concat tag ":") "" tags)))
+  	    (append org-file-tags (when ltags (split-string ltags ":" t))))
       (if (string= ":" tags) nil tags)))
 
   (defadvice org-archive-subtree (around my-org-archive-subtree-low-level activate)
     (let ((tags (my-org-inherited-no-file-tags))
-	  (org-archive-location
-	   (if (save-excursion (org-back-to-heading)
-			       (> (org-outline-level) 1))
-	       (concat (car (split-string org-archive-location "::"))
-		       "::* "
-		       (car (org-get-outline-path)))
-	     org-archive-location)))
+  	  (org-archive-location
+  	   (if (save-excursion (org-back-to-heading)
+  			       (> (org-outline-level) 1))
+  	       (concat (car (split-string org-archive-location "::"))
+  		       "::* "
+  		       (car (org-get-outline-path)))
+  	     org-archive-location)))
       ad-do-it
       (with-current-buffer (find-file-noselect (org-extract-archive-file))
-	(save-excursion
-	  (while (org-up-heading-safe))
-	  (org-set-tags-to tags)))))
+  	(save-excursion
+  	  (while (org-up-heading-safe))
+  	  (org-set-tags-to tags)))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; specify the org files to be scanned for agenda
   (setq org-agenda-files
-	(delq nil
-	      (mapcar (lambda (x) (and (file-exists-p x) x))
-		      '("~/Dropbox/orgFiles/qikeMain.org"
-			"~/Dropbox/orgFiles/journal.org"))))
+  	(delq nil
+  	      (mapcar (lambda (x) (and (file-exists-p x) x))
+  		      '("~/Dropbox/orgFiles/qikeMain.org"
+  			"~/Dropbox/orgFiles/journal.org"))))
   (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -193,6 +187,13 @@
   	  (tags priority-down category-keep)
   	  (search category-keep))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
+
+  ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved
+  ;; After using scimax, this problem doesn't seem occur anymore. Now the key for org-move-subtree-down is "M-down", and for org-move-subtree-up is <M-up>
+  ;; (add-hook 'org-mode-hook
+  ;; 	    (lambda ()
+  ;; 	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
+  ;; 	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
