@@ -148,3 +148,11 @@
   )
 
 
+
+;; * integrate gmail with emacs
+(use-package edit-server
+  :init
+  (require 'edit-server)
+  (edit-server-start)
+  (setq edit-server-new-frame nil))
+(se-package gmail-message-mode)
