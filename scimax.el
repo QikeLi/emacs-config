@@ -3,7 +3,8 @@
 ;;; Commentary:
 ;; 
 ;; * Basic settings
-(load-theme 'leuven)
+;; (load-theme 'leuven)			;dislike Kitchin's choice
+(load-theme 'solarized-dark t)				;Qike's choice
 
 (setq inhibit-startup-screen t) ;; stop showing startup screen
 (tool-bar-mode 0)           ; remove the icons
