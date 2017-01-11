@@ -110,7 +110,7 @@
   (eval-after-load 'org
     '(progn
        (add-to-list 'org-structure-template-alist
-  		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig_1?.pdf :width 6.75 :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+  		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig-1?.pdf :width 6.75 :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
        (add-to-list 'org-structure-template-alist
   		    '("r" "#+BEGIN_SRC R :exports both :results output :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -262,8 +262,8 @@ add it to `before-save-hook'."
 ;; * Other packages
 
 (use-package aggressive-indent
-  :config (aggressive-indent-global-mode 1))
-
+  ;; :config (aggressive-indent-global-mode 1)) ;Kitchin's Choice
+  :config (aggressive-indent-global-mode -1)) ;Qike: stop aggressive indentation fro evary programming mode.
 (use-package auto-complete
   :diminish auto-complete-mode
   :config (ac-config-default))
@@ -726,8 +726,8 @@ add it to `before-save-hook'."
   :demand
   :init
   (setq sml/no-confirm-load-theme t)
-  ;; (setq sml/theme 'light)		;Kitchin's choice
-  (setq sml/theme 'dark)		;Qike's choide
+  (setq sml/theme 'light)		;Kitchin's choice
+  ;; (setq sml/theme 'dark)		;Qike's choide
   (sml/setup))
 ;; (progn
 ;;   (smart-mode-line-enable)))

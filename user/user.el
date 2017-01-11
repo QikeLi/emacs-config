@@ -157,6 +157,20 @@
   (setq edit-server-new-frame nil))
 (use-package gmail-message-mode)
 
+;; * conver pdf figures to image files when export org files
+;; a package to convert pdf figures in your .org file to .png, .jpg, etc., so that the
+;; figures can be displayed properly after exported.
+;; referece:
+;; https://github.com/kaushalmodi/.emacs.d/issues/22   ;this is an issue I raised under the name: modi/org-include-img-from-pdf function
+;; https://github.com/kaushalmodi/.emacs.d/tree/master/elisp/org-include-img-from-pdf
+(use-package org-include-img-from-pdf
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages"
+  :config
+  (progn
+    (with-eval-after-load 'ox
+      (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf))))
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)

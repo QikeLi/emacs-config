@@ -3,8 +3,9 @@
 ;;; Commentary:
 ;; 
 ;; * Basic settings
-;; (load-theme 'leuven)			;dislike Kitchin's choice
-(load-theme 'solarized-dark t)				;Qike's choice
+(load-theme 'leuven)			;dislike Kitchin's choice
+;; some words are highlited in blue, which is hard to see. Need to fix this later
+;; (load-theme 'solarized-dark t)				;Qike's choice
 
 (setq inhibit-startup-screen t) ;; stop showing startup screen
 (tool-bar-mode 0)           ; remove the icons
