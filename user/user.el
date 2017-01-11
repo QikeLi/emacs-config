@@ -169,7 +169,8 @@
   :config
   (progn
     (with-eval-after-load 'ox
-      (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf))))
+      ;; (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf)))) ;Modi's original code
+      (add-hook 'org-export-babel-evaluate-hook #'modi/org-include-img-from-pdf)))) ;Qike's modifiication
 
 ;; * Miscellaneous
 ;; ** set some variables
@@ -184,7 +185,6 @@
 ;; move files to ~/.Trash when delete
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash")
-
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()
   "Open the file path under cursor.

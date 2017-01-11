@@ -216,7 +216,7 @@ is positive, move after, and if negative, move before."
 
 ;; * Babel settings
 ;; do not evaluate code on export by default
-(setq org-export-babel-evaluate nil)
+;; (setq org-export-babel-evaluate nil)
 
 ;; enable prompt-free code running
 (setq org-confirm-babel-evaluate nil
