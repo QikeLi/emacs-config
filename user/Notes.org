@@ -1,0 +1,16 @@
+#+STARTUP: indent
+* Change of Kitchin's modification
+** Org
+*** evaluate code on export by default
+:PROPERTIES:
+:ID:       F93D8E67-5E8C-43EA-84AF-62595E5CD181
+:END:
+ - [X] Kitchin doesn't like to evaluate code on export by default. I commented out a line is his scimax-org.el to enable evaluate code on export.
+  see here: [[file:~/Dropbox/scimax/scimax-org.el::;;%20(setq%20org-export-babel-evaluate%20nil)][evaluate code on export line in scimax-org.el]]
+
+ - [ ] Meanwhile, I changed the hook in Modi's function to display pdf figures after .org is exported. Because this function was invoked before code is evaluated on export. Therefore, the pdf figure still cannot display in the exported file. 
+  see here:[[file:user.el::(add-hook%20'org-export-babel-evaluate-hook%20#'modi/org-include-img-from-pdf))))%20;Qike's%20modifiicationl][change the hook in Mobi's function]]
+  PS. Modi's function is located in user.el
+
+   - [ ] This is still not correct. This hook, org-export-babel-evaluate-hook, I added is still not correct. need to make sure that Modi's function is invoked after babel evaluation. Need to research online.
+     
