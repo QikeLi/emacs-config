@@ -24,7 +24,7 @@
 
   ;; I like to press enter to follow a link. mouse clicks also work.
   (setq org-return-follows-link t)
-
+;; ** Qike's configuration
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; This block is Qike's customization
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -248,7 +248,7 @@ add it to `before-save-hook'."
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;; ** Kitchin's configuration
   :bind
   (("C-c l" . org-store-link)
    ("C-c L" . org-insert-link-global)

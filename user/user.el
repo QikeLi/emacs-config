@@ -176,7 +176,7 @@
 ;; Turn on (flyspell-mode)
 (flyspell-mode)				;; Note: force to turn this on when start up emacs since otherwise have trouble to load dictionary. see the issue I raised at scimax: https://github.com/jkitchin/scimax/issues/32
 ;; Turn on agenda reminder
-;; (org-agenda-to-appt)
+(org-agenda-to-appt)
 ;; Everyday at 12:05am run org-agenda-to-appt(useful in case you keep Emacs always on)
 (run-at-time "12:05am" (* 24 3600) 'org-agenda-to-appt)
 ;; prvent start a new frame when open a file from Mac Finder
