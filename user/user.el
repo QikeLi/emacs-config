@@ -171,6 +171,12 @@
     (with-eval-after-load 'ox
       ;; (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf)))) ;Modi's original code
       (add-hook 'org-export-babel-evaluate-hook #'modi/org-include-img-from-pdf)))) ;Qike's modifiication
+;; * Outlines in R code
+;; This minor mode is written by Qike. I modified the code in Kitchin's scimax.el
+(use-package outline-R-code
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages") 
+
 
 ;; * Miscellaneous
 ;; ** set some variables
