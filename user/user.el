@@ -175,6 +175,12 @@
 ;; This minor mode is written by Qike. I modified the code in Kitchin's scimax.el
 (use-package outline-R-code
   :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages")
+
+;; * Outlines in LaTeX code
+;; This minor mode is written by Qike. I modified the code in Kitchin's scimax.el
+(use-package outline-TeX-code
+  :ensure nil
   :load-path "~/Dropbox/scimax/user/user-packages") 
 
 
