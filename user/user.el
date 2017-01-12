@@ -4,16 +4,45 @@
   ;; :diminish undo-tree-mode
   :demand			;override package deferral
   :bind (("S-SPC" . "SPC") ;shift space should be a space	 
-	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
-	 ("M-<" . beginning-of-buffer)
-	 ("M->" . end-of-buffer)
-	 ("M-S-z" . undo-tree-redo)
-	 ;; resolve the conflicts with swiper package
-	 ("M-x" . ergoemacs-cut-line-or-region)
-	 ("C-s" . save-buffer)
-	 ("C-f" . swiper)
-	 ("M-a" . counsel-M-x)
-	 ("C-o". counsel-find-file))
+  	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
+  	 ("M-<" . beginning-of-buffer)
+  	 ("M->" . end-of-buffer)
+  	 ("M-S-z" . undo-tree-redo)
+  	 ;; resolve the conflicts with swiper package
+  	 ("M-x" . ergoemacs-cut-line-or-region)
+  	 ("C-s" . save-buffer)
+  	 ("C-f" . swiper)
+  	 ("M-a" . counsel-M-x)
+  	 ("C-o". counsel-find-file))
+  ;; ;; ;;;;;;;;;
+  ;; :init
+
+  ;; ;;;;;;;;;;;;;;;;;;
+  ;; ;; Matthew Fidler' suggestion. See his email to me
+  ;; (setq ivy-use-virtual-buffers t)
+  ;; (global-set-key [remap isearch-forward] 'swiper)
+  ;; (defun my-reftex-hook ()
+  ;;   (define-key swiper "C-s" nil)
+  ;;   (define-key reftex-mode-map "\C-c/" nil)
+  ;;   (define-key reftex-mode-map "\C-c/" nil)
+  ;;   )
+  ;; (add-hook 'reftex-mode-hook 'my-reftex-hook)
+  ;; ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  ;; ;; (global-set-key (kbd "<f6>") 'ivy-resume)
+  ;; (global-set-key [remap execute-extended-command] 'counsel-M-x)
+  ;; (global-set-key [remap find-file] 'counsel-find-file)
+  ;; (global-set-key [remap describe-function] 'counsel-describe-function)
+  ;; (global-set-key [remap describe-variable] 'counsel-describe-variable)
+  ;; (global-set-key [remap find-library] 'counsel-find-library)
+  ;; (global-set-key [remap info-lookup-symbol] 'counsel-info-lookup-symbol)
+  ;; ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  ;; ;; (global-set-key (kbd "C-c g") 'counsel-git)
+  ;; (global-set-key [remap vc-git-grep] 'counsel-git-grep)
+  ;; ;; (global-set-key (kbd "C-c k") 'counsel-ag)
+  ;; (global-set-key [remap locate] 'counsel-locate)
+  ;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  ;; ;; (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  ;; ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   :init
   ;; set keys for Apple keyboard, for emacs in OS X
   (setq mac-command-modifier 'meta)  ;; Otherwise it would be Alt on Mac (I want Cmd which was a default for stable version of ergoemacs-mode)
@@ -25,12 +54,13 @@
   (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
   
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
-  ;; this may be a temporary fix
-  (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
-  (setq icicle-mode t)		; this may be a temporary fix
-  (setq multiple-cursors-mode t)		; this may be a temporary fix
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  ;; ;; this may be a temporary fix
+  ;; (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  ;; (setq icicle-mode t)		; this may be a temporary fix
+  ;; (setq multiple-cursors-mode t)		; this may be a temporary fix
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
   
   ;;;;;;;;;;;; script in this block is experiment
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
