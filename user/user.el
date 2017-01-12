@@ -184,6 +184,10 @@
   :load-path "~/Dropbox/scimax/user/user-packages") 
 
 
+;; * org-mime
+(use-package org-mime
+  :load-path "~/Dropbox/scimax"
+  :ensure nil)
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)
