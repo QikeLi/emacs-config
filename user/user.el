@@ -188,6 +188,12 @@
 (use-package org-mime
   :load-path "~/Dropbox/scimax"
   :ensure nil)
+;; * org-export-html-with-numbered-bibliography
+;; turn this off if exporting to LaTeX(Beamer) is having problems 
+(use-package org-export-html-with-numbered-bibliography
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages")
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)

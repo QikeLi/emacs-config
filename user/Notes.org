@@ -14,3 +14,7 @@
 
    - [ ] This is still not correct. This hook, org-export-babel-evaluate-hook, I added is still not correct. need to make sure that Modi's function is invoked after babel evaluation. Need to research online.
      
+
+* Reminders
+** If org-mode has troubles exporting to LaTeX/Beamer, try turn this off
+ [[file:user.el::;;%20*%20org-export-html-with-numbered-bibliography][function to facilitate exporting org files to html with numbered bibliography]]

@@ -204,47 +204,6 @@
   (setq org-refile-targets (quote (("qikeMain.org" :maxlevel . 6))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; a function to display PDF images in org-mode (note: not working yet)
-  (add-hook 'before-save-hook #'modi/org-include-img-from-pdf)
-  ;; Execute the `modi/org-include-img-from-pdf' function before processing the
-  ;; file for export
-  (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf)
-
-  (defun modi/org-include-img-from-pdf (&rest ignore)
-    "Convert the pdf files to image files.
-
-Only looks at #HEADER: lines that have \":convertfrompdf t\".
-This function does nothing if not in org-mode, so you can safely
-add it to `before-save-hook'."
-    (interactive)
-    (when (derived-mode-p 'org-mode)
-      (save-excursion
-	(goto-char (point-min))
-	(while (search-forward-regexp
-		"^\\s-*#\\+HEADER:.*\\s-:convertfrompdf\\s-+t"
-		nil 'noerror)
-	  (let* (filenoext imgext imgfile pdffile cmd)
-	    ;; Keep on going on to the next line till it finds a line with
-	    ;; `[[FILE]]'
-	    (while (progn
-		     (forward-line 1)
-		     (not (looking-at "\\[\\[\\(.*\\)\\.\\(.*\\)\\]\\]"))))
-	    (when (looking-at "\\[\\[\\(.*\\)\\.\\(.*\\)\\]\\]")
-	      (setq filenoext (match-string-no-properties 1))
-	      (setq imgext (match-string-no-properties 2))
-	      (setq imgfile (expand-file-name (concat filenoext "." imgext)))
-	      (setq pdffile (expand-file-name (concat filenoext "." "pdf")))
-	      (setq cmd (concat "convert -density 96 -quality 85 "
-				pdffile " " imgfile))
-	      (when (file-newer-than-file-p pdffile imgfile)
-		;; This block is executed only if pdffile is newer than imgfile
-		;; or if imgfile does not exist
-		;; Source: https://www.gnu.org/software/emacs/manual/html_node/elisp/Testing-Accessibility.html
-		(message "%s" cmd)
-		(shell-command cmd))))))))
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -561,132 +520,7 @@ add it to `before-save-hook'."
 	bibtex-autokey-titlewords 2
 	bibtex-autokey-titlewords-stretch 1
 	bibtex-autokey-titleword-length 5)
-  (global-set-key (kbd "H-b") 'org-ref-bibtex-hydra/body)
-;; *** Qike's configuration
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; This block is added by Qike to export numbered citations in html with unsorted numbered bibliography
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; (defun org-ref-nil-html-processor () nil) ;added by Qike
-  ;; (defun org-ref-nil-latex-processor () nil) ;added by Qike
-  ;; (defun org-ref-unsrt-latex-processor () nil)
-  ;; (defun org-ref-unsrt-html-processor ()
-  ;;   "Citation processor function for the unsrt style with html output."
-  ;;   (let (links
-  ;; 	  unique-keys numbered-keys
-  ;; 	  replacements
-  ;; 	  bibliography-link
-  ;; 	  bibliographystyle-link
-  ;; 	  bibliography)
-  ;;     ;; step 1 - get the citation links
-  ;;     (setq links (loop for link in (org-element-map
-  ;; 					(org-element-parse-buffer) 'link 'identity)
-  ;; 			if (-contains?
-  ;; 			    org-ref-cite-types
-  ;; 			    (org-element-property :type link))
-  ;; 			collect link))
-
-  ;;     ;; list of unique numbered keys. '((key number))
-  ;;     (setq unique-keys (loop for i from 1
-  ;; 			      for key in (org-ref-get-bibtex-keys)
-  ;; 			      collect (list key (number-to-string i))))
-
-
-  ;;     ;; (start end replacement-text)
-  ;;     (setq replacements
-  ;; 	    (loop for link in links
-  ;; 		  collect
-  ;; 		  (let ((path (org-element-property :path link)))
-  ;; 		    (loop for (key number) in unique-keys
-  ;; 			  do
-  ;; 			  (setq
-  ;; 			   path
-  ;; 			   (replace-regexp-in-string
-  ;; 			    key (format "<a href=\"#%s\">%s</a>" key number)
-  ;; 			    path)))
-  ;; 		    (list (org-element-property :begin link)
-  ;; 			  (org-element-property :end link)
-  ;; 			  (format "@@html:<sup>%s</sup>@@" path)))))
-
-  ;;     ;; construct the bibliography string
-  ;;     (setq bibliography
-  ;; 	    (concat "#+BEGIN_EXPORT HTML	
-  ;; <h1>Bibliography</h1><ol>"
-  ;; 		    (mapconcat
-  ;; 		     'identity
-  ;; 		     (loop for (key number) in unique-keys
-  ;; 			   collect
-  ;; 			   (let* ((result (org-ref-get-bibtex-key-and-file key))
-  ;; 				  (bibfile (cdr result))
-  ;; 				  (entry (save-excursion
-  ;; 					   (with-temp-buffer
-  ;; 					     (insert-file-contents bibfile)
-  ;; 					     (bibtex-set-dialect
-  ;; 					      (parsebib-find-bibtex-dialect) t)
-  ;; 					     (bibtex-search-entry key)
-  ;; 					     (bibtex-parse-entry t)))))
-  ;; 			     ;; remove escaped & in the strings
-  ;; 			     (replace-regexp-in-string "\\\\&" "&"
-  ;; 						       (org-ref-reftex-format-citation
-  ;; 							entry
-  ;; 							(cdr (assoc (cdr (assoc "=type=" entry))
-  ;; 								    org-ref-bibliography-entry-format))))))
-  ;; 		     "")
-  ;; 		    "</ol>
-  ;; #+END_EXPORT")) ;changed by Qike
-
-  ;;     ;; now, we need to replace each citation. We do that in reverse order so the
-  ;;     ;; positions do not change.
-  ;;     (loop for (start end replacement) in (reverse replacements)
-  ;; 	    do
-  ;; 	    (setf (buffer-substring start end) replacement))
-
-  ;;     ;; Eliminate bibliography style links
-  ;;     (loop for link in (org-element-map
-  ;; 			    (org-element-parse-buffer) 'link 'identity)
-  ;; 	    if (string= "bibliographystyle"
-  ;; 			(org-element-property :type link))
-  ;; 	    do
-  ;; 	    (setf (buffer-substring (org-element-property :begin link)
-  ;; 				    (org-element-property :end link))
-  ;; 		  ""))
-
-  ;;     ;; replace the bibliography link with the bibliography text
-  ;;     (setq bibliography-link (loop for link in (org-element-map
-  ;; 						    (org-element-parse-buffer) 'link 'identity)
-  ;; 				    if (string= "bibliography"
-  ;; 						(org-element-property :type link))
-  ;; 				    collect link))
-  ;;     (if (> (length bibliography-link) 1)
-  ;; 	  (error "Only one bibliography link allowed"))
-
-  ;;     (setq bibliography-link (car bibliography-link))
-  ;;     (setf (buffer-substring (org-element-property :begin bibliography-link)
-  ;; 			      (org-element-property :end bibliography-link))
-  ;; 	    bibliography)))
-
-
-  ;; (defun org-ref-citation-processor (backend)
-  ;;   "Figure out what to call and call it"
-  ;;   (let (bibliographystyle)
-  ;;     (setq
-  ;;      bibliographystyle
-  ;;      (org-element-property
-  ;; 	:path (car
-  ;; 	       (loop for link in
-  ;; 		     (org-element-map
-  ;; 			 (org-element-parse-buffer) 'link 'identity)
-  ;; 		     if (string= "bibliographystyle"
-  ;; 				 (org-element-property :type link))
-  ;; 		     collect link))))
-  ;;     (funcall (intern (format "org-ref-%s-%s-processor" bibliographystyle backend)))))
-
-  ;; (add-hook 'org-export-before-parsing-hook 'org-ref-citation-processor)
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  )
+  (global-set-key (kbd "H-b") 'org-ref-bibtex-hydra/body))
 
 
 ;; https://github.com/bbatsov/projectile
@@ -723,14 +557,11 @@ add it to `before-save-hook'."
 (use-package s)
 
 (use-package smart-mode-line
-  :demand
-  :init
+  :config
   (setq sml/no-confirm-load-theme t)
   (setq sml/theme 'light)		;Kitchin's choice
   ;; (setq sml/theme 'dark)		;Qike's choice
   (sml/setup))
-;; (progn
-;;   (smart-mode-line-enable)))
 
 
 ;; keep recent commands available in M-x
