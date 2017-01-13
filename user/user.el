@@ -8,7 +8,7 @@
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
 	 ("M-<" . beginning-of-buffer)
 	 ("M->" . end-of-buffer)
-	 ;; 	 ("M-S-z" . undo-tree-redo)
+	 ("M-S-z" . undo-tree-redo)
 	 ;; resolve the conflicts with swiper package
 	 ("M-x" . ergoemacs-cut-line-or-region)
 	 ("C-s" . save-buffer)
@@ -65,7 +65,7 @@
   ;; ;; this may be a temporary fix
   ;; (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
   ;; (setq icicle-mode t)		; this may be a temporary fix
-  ;; (setq multiple-cursors-mode t)		; this may be a temporary fix
+  ;; (setq multiple-cursors-mode nil)		; this may be a temporary fix
   ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;
   
