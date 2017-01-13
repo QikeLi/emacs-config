@@ -1,19 +1,34 @@
 ;; * ergoemacs-mode
 (use-package ergoemacs-mode
-  ;; :load-path "elpa/ergoemacs-mode/"
+  ;; :load-path "~/Dropbox/scimax/elpa/ergoemacs-mode-20170112.1108"
   ;; :diminish undo-tree-mode
-  :demand			;override package deferral
-  :bind (("S-SPC" . "SPC") ;shift space should be a space	 
-  	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
-  	 ("M-<" . beginning-of-buffer)
-  	 ("M->" . end-of-buffer)
-  	 ("M-S-z" . undo-tree-redo)
-  	 ;; resolve the conflicts with swiper package
-  	 ("M-x" . ergoemacs-cut-line-or-region)
-  	 ("C-s" . save-buffer)
-  	 ("C-f" . swiper)
-  	 ("M-a" . counsel-M-x)
-  	 ("C-o". counsel-find-file))
+  ;; :demand			;override package deferral
+  :ensure t
+  :bind (("S-SPC" . "SPC")	    ;shift space should be a space	 
+	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
+	 ("M-<" . beginning-of-buffer)
+	 ("M->" . end-of-buffer)
+	 ;; 	 ("M-S-z" . undo-tree-redo)
+	 ;; resolve the conflicts with swiper package
+	 ("M-x" . ergoemacs-cut-line-or-region)
+	 ("C-s" . save-buffer)
+	 ;;	 ("C-f" . swiper)
+	 ;;	 ("M-a" . counsel-M-x)
+	 ;;	 ("C-o". counsel-find-file)
+	 )
+  :init
+  ;; set keys for Apple keyboard, for emacs in OS X
+  (setq mac-command-modifier 'meta) ;; Otherwise it would be Alt on Mac (I want Cmd which was a default for stable version of ergoemacs-mode)
+  ;;(setq ergoemacs-use-mac-command-as-meta 1)
+  (setq mac-option-modifier 'super) ; make opt key do Super
+  ;; (setq mac-control-modifier 'control)	; make Control key do Control
+  ;; (setq ns-function-modifier 'hyper)	; make Fn key do Hyper
+  ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
+  (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
+  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
+  (ergoemacs-mode 1)
+  :config
+  (ergoemacs-require 'swiper))
   ;; ;; ;;;;;;;;;
   ;; :init
 
@@ -43,16 +58,8 @@
   ;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
   ;; ;; (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
   ;; ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  :init
-  ;; set keys for Apple keyboard, for emacs in OS X
-  (setq mac-command-modifier 'meta)  ;; Otherwise it would be Alt on Mac (I want Cmd which was a default for stable version of ergoemacs-mode)
-  (setq mac-option-modifier 'super) ; make opt key do Super
-  (setq mac-control-modifier 'control) ; make Control key do Control
-  (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
-  ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
-  (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
-  
+ 
+ ;; (ergoemacs-require 'swiper)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
   ;; ;; this may be a temporary fix
@@ -71,7 +78,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
   ;; :config
-  (ergoemacs-mode 1))
+  
 ;; (ergoemacs-theme-component extra () 
 ;;   "Extra keys" 
 ;;   :layout "us"
@@ -81,7 +88,7 @@
 ;; 	   ("M-e" . my-backward-delete-word)
 ;; 	   ("M-r" . my-delete-word)
 ;; 	   ("<menu> c" . company-complete)))
-;; (ergoemacs-require 'extra)
+;; (ergoemacs-require 'extra);; ;; 
 
 ;; * ESS
 ;; Adapted with one minor change from Felipe Salazar at
@@ -220,9 +227,9 @@
   :ensure nil)
 ;; * org-export-html-with-numbered-bibliography
 ;; turn this off if exporting to LaTeX(Beamer) is having problems 
-(use-package org-export-html-with-numbered-bibliography
-  :ensure nil
-  :load-path "~/Dropbox/scimax/user/user-packages")
+;; (use-package org-export-html-with-numbered-bibliography
+;;   :ensure nil
+;;   :load-path "~/Dropbox/scimax/user/user-packages")
 
 ;; * Miscellaneous
 ;; ** set some variables
