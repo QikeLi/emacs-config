@@ -25,9 +25,13 @@
   ;; (setq ns-function-modifier 'hyper)	; make Fn key do Hyper
   ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
   (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
+  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout  
   (ergoemacs-mode 1)
   :config
+  ;; enable backward-praragraph in orgstruct-mode
+  (progn
+    (define-key orgstruct-mode-map (kbd "M-U") 'backward-paragraph ))
+  ;; resolve the coflicts with swiper
   (ergoemacs-require 'swiper))
   ;; ;; ;;;;;;;;;
   ;; :init
