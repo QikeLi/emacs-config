@@ -1,9 +1,10 @@
 ;; * ergoemacs-mode
 (use-package ergoemacs-mode
-  ;; :load-path "elpa/ergoemacs-mode/"
+  ;; :load-path "~/Dropbox/scimax/elpa/ergoemacs-mode-20170112.1108"
   ;; :diminish undo-tree-mode
-  :demand			;override package deferral
-  :bind (("S-SPC" . "SPC") ;shift space should be a space	 
+  ;; :demand			;override package deferral
+  :ensure t
+  :bind (("S-SPC" . "SPC")	    ;shift space should be a space	 
 	 ("C-SPC" . set-mark-command)	;change Ctrl+Space to set mark since Alt+Space is reserved by Mac OSX for spotlight
 	 ("M-<" . beginning-of-buffer)
 	 ("M->" . end-of-buffer)
@@ -11,26 +12,68 @@
 	 ;; resolve the conflicts with swiper package
 	 ("M-x" . ergoemacs-cut-line-or-region)
 	 ("C-s" . save-buffer)
-	 ("C-f" . swiper)
-	 ("M-a" . counsel-M-x)
-	 ("C-o". counsel-find-file))
+	 ;;	 ("C-f" . swiper)
+	 ;;	 ("M-a" . counsel-M-x)
+	 ;;	 ("C-o". counsel-find-file)
+	 )
   :init
   ;; set keys for Apple keyboard, for emacs in OS X
-  (setq mac-command-modifier 'meta)  ;; Otherwise it would be Alt on Mac (I want Cmd which was a default for stable version of ergoemacs-mode)
+  (setq mac-command-modifier 'meta) ;; Otherwise it would be Alt on Mac (I want Cmd which was a default for stable version of ergoemacs-mode)
+  ;;(setq ergoemacs-use-mac-command-as-meta 1)
   (setq mac-option-modifier 'super) ; make opt key do Super
-  (setq mac-control-modifier 'control) ; make Control key do Control
-  (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+  ;; make my the menu key on Microsoft sculpt keyboad do hyper
+  (define-key key-translation-map (kbd "C-p") 'event-apply-hyper-modifier)
+  ;; (setq mac-control-modifier 'control)	; make Control key do Control
+  ;; (setq ns-function-modifier 'hyper)	; make Fn key do Hyper
   ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
   (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout
-  
+  (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout  
+  (ergoemacs-mode 1)
+  :config
+  ;; enable backward-praragraph in orgstruct-mode
+  (progn
+    (define-key orgstruct-mode-map (kbd "M-U") 'backward-paragraph ))
+  ;; resolve the coflicts with swiper
+  (ergoemacs-require 'swiper))
+  ;; ;; ;;;;;;;;;
+  ;; :init
+
+  ;; ;;;;;;;;;;;;;;;;;;
+  ;; ;; Matthew Fidler' suggestion. See his email to me
+  ;; (setq ivy-use-virtual-buffers t)
+  ;; (global-set-key [remap isearch-forward] 'swiper)
+  ;; (defun my-reftex-hook ()
+  ;;   (define-key swiper "C-s" nil)
+  ;;   (define-key reftex-mode-map "\C-c/" nil)
+  ;;   (define-key reftex-mode-map "\C-c/" nil)
+  ;;   )
+  ;; (add-hook 'reftex-mode-hook 'my-reftex-hook)
+  ;; ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  ;; ;; (global-set-key (kbd "<f6>") 'ivy-resume)
+  ;; (global-set-key [remap execute-extended-command] 'counsel-M-x)
+  ;; (global-set-key [remap find-file] 'counsel-find-file)
+  ;; (global-set-key [remap describe-function] 'counsel-describe-function)
+  ;; (global-set-key [remap describe-variable] 'counsel-describe-variable)
+  ;; (global-set-key [remap find-library] 'counsel-find-library)
+  ;; (global-set-key [remap info-lookup-symbol] 'counsel-info-lookup-symbol)
+  ;; ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  ;; ;; (global-set-key (kbd "C-c g") 'counsel-git)
+  ;; (global-set-key [remap vc-git-grep] 'counsel-git-grep)
+  ;; ;; (global-set-key (kbd "C-c k") 'counsel-ag)
+  ;; (global-set-key [remap locate] 'counsel-locate)
+  ;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  ;; ;; (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  ;; ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ;; (ergoemacs-require 'swiper)
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
-  ;; this may be a temporary fix
-  (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
-  (setq icicle-mode t)		; this may be a temporary fix
-  (setq multiple-cursors-mode t)		; this may be a temporary fix
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; ;; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  ;; ;; this may be a temporary fix
+  ;; (setq icicle-ido-like-mode t) 	; prevent show "symbol's value as variable is void: icicle-ido-like-mode" when describing a key-bindin,
+  ;; (setq icicle-mode t)		; this may be a temporary fix
+  ;; (setq multiple-cursors-mode nil)		; this may be a temporary fix
+  ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
   
   ;;;;;;;;;;;; script in this block is experiment
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,7 +84,7 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
   ;; :config
-  (ergoemacs-mode 1))
+  
 ;; (ergoemacs-theme-component extra () 
 ;;   "Extra keys" 
 ;;   :layout "us"
@@ -51,7 +94,7 @@
 ;; 	   ("M-e" . my-backward-delete-word)
 ;; 	   ("M-r" . my-delete-word)
 ;; 	   ("<menu> c" . company-complete)))
-;; (ergoemacs-require 'extra)
+;; (ergoemacs-require 'extra);; ;; 
 
 ;; * ESS
 ;; Adapted with one minor change from Felipe Salazar at
@@ -157,14 +200,56 @@
   (setq edit-server-new-frame nil))
 (use-package gmail-message-mode)
 
+;; * conver pdf figures to image files when export org files
+;; a package to convert pdf figures in your .org file to .png, .jpg, etc., so that the
+;; figures can be displayed properly after exported.
+;; referece:
+;; https://github.com/kaushalmodi/.emacs.d/issues/22   ;this is an issue I raised under the name: modi/org-include-img-from-pdf function
+;; https://github.com/kaushalmodi/.emacs.d/tree/master/elisp/org-include-img-from-pdf
+(use-package org-include-img-from-pdf
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages"
+  :config
+  (progn
+    (with-eval-after-load 'ox
+      ;; (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf)))) ;Modi's original code
+      (add-hook 'org-export-babel-evaluate-hook #'modi/org-include-img-from-pdf)))) ;Qike's modifiication
+;; * Outlines in R code
+;; This minor mode is written by Qike. I modified the code in Kitchin's scimax.el
+(use-package outline-R-code
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages")
+
+;; * Outlines in LaTeX code
+;; This minor mode is written by Qike. I modified the code in Kitchin's scimax.el
+(use-package outline-TeX-code
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages") 
+
+
+;; * org-mime
+(use-package org-mime
+  :load-path "~/Dropbox/scimax"
+  :ensure nil)
+;; * org-export-html-with-numbered-bibliography
+;; turn this off if exporting to LaTeX(Beamer) is having problems 
+;; (use-package org-export-html-with-numbered-bibliography
+;;   :ensure nil
+;;   :load-path "~/Dropbox/scimax/user/user-packages")
+
 ;; * Miscellaneous
+;; ** set some variables
+;; Turn on (flyspell-mode)
+(flyspell-mode)				;; Note: force to turn this on when start up emacs since otherwise have trouble to load dictionary. see the issue I raised at scimax: https://github.com/jkitchin/scimax/issues/32
 ;; Turn on agenda reminder
-;; (org-agenda-to-appt)
+(org-agenda-to-appt)
 ;; Everyday at 12:05am run org-agenda-to-appt(useful in case you keep Emacs always on)
-;; (run-at-time "12:05am" (* 24 3600) 'org-agenda-to-appt)
+(run-at-time "12:05am" (* 24 3600) 'org-agenda-to-appt)
 ;; prvent start a new frame when open a file from Mac Finder
 (setq ns-pop-up-frames nil)
-
+;; move files to ~/.Trash when delete
+(setq delete-by-moving-to-trash t)
+(setq trash-directory "~/.Trash")
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()
   "Open the file path under cursor.
@@ -234,3 +319,44 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
       (set-window-start (selected-window) other-window-start))
     (select-window other-window)))
 (global-set-key (kbd "C-c C-x p") 'swap-window-positions)
+
+;; ** a function to display PDF images in org-mode
+
+;; ;; Execute the `modi/org-include-img-from-pdf' function just before saving the file
+;; (add-hook 'before-save-hook #'modi/org-include-img-from-pdf)
+;; ;; Execute the `modi/org-include-img-from-pdf' function before processing the
+;; ;; file for export
+;; (add-hook 'org-export-before-processing-hook #'modi/org-include-img-from-pdf)
+
+;; (defun modi/org-include-img-from-pdf (&rest ignore)
+;;   "Convert the pdf files to image files.
+
+;; Only looks at #HEADER: lines that have \":convertfrompdf t\".
+;; This function does nothing if not in org-mode, so you can safely
+;; add it to `before-save-hook'."
+;;   (interactive)
+;;   (when (derived-mode-p 'org-mode)
+;;     (save-excursion
+;;       (goto-char (point-min))
+;;       (while (search-forward-regexp
+;;               "^\\s-*#\\+HEADER:.*\\s-:convertfrompdf\\s-+t"
+;;               nil 'noerror)
+;;         (let* (filenoext imgext imgfile pdffile cmd)
+;;           ;; Keep on going on to the next line till it finds a line with
+;;           ;; `[[FILE]]'
+;;           (while (progn
+;;                    (forward-line 1)
+;;                    (not (looking-at "\\[\\[\\(.*\\)\\.\\(.*\\)\\]\\]"))))
+;;           (when (looking-at "\\[\\[\\(.*\\)\\.\\(.*\\)\\]\\]")
+;;             (setq filenoext (match-string-no-properties 1))
+;;             (setq imgext (match-string-no-properties 2))
+;;             (setq imgfile (expand-file-name (concat filenoext "." imgext)))
+;;             (setq pdffile (expand-file-name (concat filenoext "." "pdf")))
+;;             (setq cmd (concat "convert -density 96 -quality 85 "
+;;                               pdffile " " imgfile))
+;;             (when (file-newer-than-file-p pdffile imgfile)
+;;               ;; This block is executed only if pdffile is newer than imgfile
+;;               ;; or if imgfile does not exist
+;;               ;; Source: https://www.gnu.org/software/emacs/manual/html_node/elisp/Testing-Accessibility.html
+;;               (message "%s" cmd)
+;;               (shell-command cmd))))))))

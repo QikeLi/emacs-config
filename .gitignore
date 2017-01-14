@@ -13,11 +13,26 @@ uservar
 test
 .DS_STORE
 ltximg
+org-html-themes/
+/#packages.el#
+/#recentf#
+/#scimax.el#
+.recentf
+/org-clock-save.el
 
 ## some files in 'user' folder
-user/recentf
-recentf
-.recentf
-user/projectile-bookmarks.eld
-user/ac-comphist.dat
-user/abbrev_defs
+/user/recentf
+/user/bookmarks
+/user/projectile-bookmarks.eld
+/user/ac-comphist.dat
+/user/abbrev_defs
+/user/games/
+/user/#recentf#
+/user/.org-id-locations
+/user/recentf~
+/user/tramp
+/user/url
+*.pygstyle
+*.el#
+*.pygtex
+/recentf
