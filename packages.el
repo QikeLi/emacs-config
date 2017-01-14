@@ -110,7 +110,7 @@
   (eval-after-load 'org
     '(progn
        (add-to-list 'org-structure-template-alist
-  		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig-1?.pdf :width 6.75 :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
+  		    '("g" "#+BEGIN_SRC R :exports both :results graphics :file ./fig-1?.png :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))
        (add-to-list 'org-structure-template-alist
   		    '("r" "#+BEGIN_SRC R :exports both :results output :session\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>"))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
