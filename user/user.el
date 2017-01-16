@@ -30,9 +30,10 @@
   (setq ergoemacs-keyboard-layout "us") ; Assumes QWERTY keyboard layout  
   (ergoemacs-mode 1)
   :config
-  ;; enable backward-praragraph in orgstruct-mode
+  ;; enable backward-praragraph and ergoemacs-beginning-or-end-of-buffer in orgstruct-mode
   (progn
-    (define-key orgstruct-mode-map (kbd "M-U") 'backward-paragraph ))
+    (define-key orgstruct-mode-map (kbd "M-U") 'backward-paragraph )
+    (define-key orgstruct-mode-map (kbd "M-n") 'ergoemacs-beginning-or-end-of-buffer))
   ;; resolve the coflicts with swiper
   (ergoemacs-require 'swiper))
   ;; ;; ;;;;;;;;;
@@ -318,7 +319,7 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
       (set-window-point (selected-window) other-window-point)
       (set-window-start (selected-window) other-window-start))
     (select-window other-window)))
-(global-set-key (kbd "C-c C-x p") 'swap-window-positions)
+(global-set-key (kbd "s-p") 'swap-window-positions)
 
 ;; ** a function to display PDF images in org-mode
 
