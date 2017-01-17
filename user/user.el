@@ -241,14 +241,22 @@
 ;; * cdlatex
 ;; this is a minor mode to speed up typing math symbols
 (use-package cdlatex
-  :ensure t
+  :ensure nil
   :init
   :diminish cdlatex-mode
   :config
   (progn
-    (add-hook 'org-mode-hook 'org-cdlatex-mode) ; with org mode
+    ;; (add-hook 'org-mode-hook 'org-cdlatex-mode) ; with org mode
+    (add-hook 'org-mode-hook 'turn-on-org-cdlatex) ; with org mode
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)     ; with AUCTeX LaTeX mode
     (add-hook 'latex-mode-hook 'turn-on-cdlatex)))     ; with Emacs latex mode
+;; * Define two keybindings for org-ref
+;; Define two keybinding for org-ref-helm-insert-label-link and org-ref-helm-insert-ref-link
+
+(use-package org-ref-insert-kbd-mode
+  :ensure nil
+  :load-path "~/Dropbox/scimax/user/user-packages"
+  :diminish org-ref-insert-kbd-mode)
 
 ;; * Miscellaneous
 ;; ** set some variables
