@@ -22,7 +22,7 @@
   ;;(setq ergoemacs-use-mac-command-as-meta 1)
   (setq mac-option-modifier 'super) ; make opt key do Super
   ;; make my the menu key on Microsoft sculpt keyboad do hyper
-  (define-key key-translation-map (kbd "C-p") 'event-apply-hyper-modifier)
+  ;; (define-key key-translation-map (kbd "C-p") 'event-apply-hyper-modifier)
   ;; (setq mac-control-modifier 'control)	; make Control key do Control
   ;; (setq ns-function-modifier 'hyper)	; make Fn key do Hyper
   ;; (define-key key-translation-map (kbd "<f13>") (kbd "<menu>")) ;; <f13> is assigned to CAPSLOCK
