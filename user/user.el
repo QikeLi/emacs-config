@@ -238,6 +238,18 @@
 ;;   :ensure nil
 ;;   :load-path "~/Dropbox/scimax/user/user-packages")
 
+;; * cdlatex
+;; this is a minor mode to speed up typing math symbols
+(use-package cdlatex
+  :ensure t
+  :init
+  :diminish cdlatex-mode
+  :config
+  (progn
+    (add-hook 'org-mode-hook 'org-cdlatex-mode) ; with org mode
+    (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)     ; with AUCTeX LaTeX mode
+    (add-hook 'latex-mode-hook 'turn-on-cdlatex)))     ; with Emacs latex mode
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)
