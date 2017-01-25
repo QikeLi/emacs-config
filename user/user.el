@@ -258,6 +258,21 @@
   :load-path "~/Dropbox/scimax/user/user-packages"
   :diminish org-ref-insert-kbd-mode)
 
+;; * biometric latex template
+;; ;; download: http://www.biometrics.tibs.org/latexdocumentclass.htm
+;; ;; wget http://www.biometrics.tibs.org/biomlatex.zip
+;; (add-to-list 'org-latex-classes '("biometrics-article"
+;; 				  "\\documentclass[useAMS,usenatbib,referee]{biom}
+;;  [NO-DEFAULT-PACKAGES]
+;;  [PACKAGES]
+;;  [EXTRA]"
+;; 	       ("\\section{%s}" . "\\section*{%s}")
+;; 	       ("\\subsection{%s}" . "\\subsection*{%s}")
+;; 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;; 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)
