@@ -271,6 +271,8 @@
 ;; move files to ~/.Trash when delete
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash")
+;; Turn off alarm sounds
+(setq ring-bell-function 'ignore)
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()
   "Open the file path under cursor.
