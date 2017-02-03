@@ -273,6 +273,42 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 
+;; * window-numbering
+;; (use-package window-numbering
+;;   :ensure t)
+
+
+;; * polymode, which enables Rmarkdown
+;; (use-package polymode
+;;   :ensure t
+;;   ;; :load-path "~/Dropbox/scimax/user/user-packages/polymode/"
+;;   :load-path "~/Dropbox/scimax/user/user-packages/polymode/modes/poly-R.el"
+;;   :mode
+;;       ("\\.Snw" . poly-noweb+r-mode)
+;;       ("\\.Rnw" . poly-noweb+r-mode)
+;;       ("\\.Rmd" . poly-markdown+r-mode)
+;;   :init (require ’poly-R)
+;;   (require ’poly-markdown))
+
+(use-package polymode		; ESS with polymode
+  :ensure f	                        ; https://github.com/vitoshka/polymode
+  :load-path "~/Dropbox/scimax/user/user-packages/polymode"
+  :load-path "~/Dropbox/scimax/user/user-packages/polymode/modes"
+  :init
+
+    ;; (setq load-path 		; Append the directory to emacs path
+    ;;   (append '("~/.emacs.d/polymode"
+    ;;   "~/.emacs.d/polymode/modes") load-path))
+  (require 'poly-R)		; Load necessary modes
+  (require 'poly-markdown)
+  (require 'poly-noweb)
+  :mode
+  ("\\.Snw" . poly-noweb+r-mode)
+  ("\\.Rnw" . poly-noweb+r-mode)
+  ("\\.Rmd" . poly-markdown+r-mode))
+
+    
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)
