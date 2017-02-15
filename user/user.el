@@ -309,6 +309,15 @@
 
     
 
+;; * whitespace mode
+(use-package whitespace
+  :init
+  (setq whitespace-line-column 80) ;; limit line length
+  (setq whitespace-style '(face lines-tail))
+  (add-hook 'prog-mode-hook 'whitespace-mode)
+  (add-hook 'ess-mode-hook 'whitespace-mode)
+  (setq whitespace-mode t)  )
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; Turn on (flyspell-mode)
