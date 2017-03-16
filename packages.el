@@ -203,7 +203,52 @@
   ;; see:https://www.reddit.com/r/emacs/comments/4366f9/how_do_orgrefiletargets_work/
   (setq org-refile-targets (quote (("qikeMain.org" :maxlevel . 6))))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; set up MobileOrg see http://blog.gabrielsaldana.org/mobileorg-for-android-setup-and-workflow/
+  ;; Org mode
+  (setq org-directory "~/Dropbox/orgFiles")
+  ;; MobileOrg
+  (setq org-mobile-directory "~/Dropbox/MobileOrg")
+  (setq org-mobile-inbox-for-pull (concat org-mobile-directory "/index.org"))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; set up block agenda
+  ;; http://orgmode.org/manual/Custom-agenda-views.html#Custom-agenda-views  
+  (add-to-list
+   'org-agenda-custom-commands
+   '("h" "Tasks to do at Home"
+     (  
+      (tags-todo "@home")
+      ))
+   )
+
+  (add-to-list
+   'org-agenda-custom-commands
+   '("H" "Tasks to do on the way to Home"
+     ( 
+      (tags-todo "@toHome")
+      ))
+   )
+
+  (add-to-list
+   'org-agenda-custom-commands
+   '("o" "Tasks to do at Office"
+     (
+      (tags-todo "@office")
+      ))
+   )
+
+  (add-to-list
+   'org-agenda-custom-commands
+   '("O" "Tasks to do on the way to Office"
+     (
+      (tags-todo "@toOffice")
+      ))
+   )
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

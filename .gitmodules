@@ -7,3 +7,6 @@
 [submodule "techela"]
 	path = techela
 	url = https://github.com/jkitchin/techela
+[submodule "user/user-packages/polymode"]
+	path = user/user-packages/polymode
+	url = https://github.com/vitoshka/polymode.git
