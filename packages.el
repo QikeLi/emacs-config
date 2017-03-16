@@ -604,8 +604,8 @@
 (use-package smart-mode-line
   :config
   (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'light)		;Kitchin's choice
-  ;; (setq sml/theme 'dark)		;Qike's choice
+  ;; (setq sml/theme 'light)		;Kitchin's choice
+  (setq sml/theme 'respectful)		;Qike's choice
   (sml/setup))
 
 
