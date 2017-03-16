@@ -807,7 +807,7 @@ F5 inserts the entity code."
 ;; * Font-lock
 ;; ** Latex fragments
 (setq org-highlight-latex-and-related '(latex script entities))
-(set-face-foreground 'org-latex-and-related "blue")
+;; (set-face-foreground 'org-latex-and-related "blue")
 
 ;; * New org links
 
