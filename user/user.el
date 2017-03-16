@@ -317,6 +317,31 @@
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (add-hook 'ess-mode-hook 'whitespace-mode)
   (setq whitespace-mode t)  )
+;; * code block background color in org-mode
+;; reassign the background colors of the code blocks
+(defface org-block-emacs-lisp
+  `((t (:background "gray22")))
+  "Face for elisp src blocks")
+
+(defface org-block-R
+  `((t (:background "gray22")))
+  "Face for elisp src blocks")
+
+(defface org-block-python
+  `((t (:background "gray22")))
+  "Face for python blocks")
+
+(defface org-block-ipython
+  `((t (:background "gray22")))
+  "Face for python blocks") 
+
+(defface org-block-jupyter-hy
+  `((t (:background "gray22")))
+  "Face for hylang blocks")
+
+(defface org-block-sh
+  `((t (:background "gray22")))
+  "Face for python blocks")
 
 ;; * Miscellaneous
 ;; ** set some variables
