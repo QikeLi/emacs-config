@@ -463,25 +463,25 @@ fontification, as long as `org-src-fontify-natively' is non-nil."
 
 
 
-(defface org-block-emacs-lisp
-  `((t (:background "LightCyan1")))
-  "Face for elisp src blocks")
+;; (defface org-block-emacs-lisp
+;;   `((t (:background "LightCyan1")))
+;;   "Face for elisp src blocks")
 
-(defface org-block-python
-  `((t (:background "DarkSeaGreen1")))
-  "Face for python blocks")
+;; (defface org-block-python
+;;   `((t (:background "DarkSeaGreen1")))
+;;   "Face for python blocks")
 
-(defface org-block-ipython
-  `((t (:background "thistle1")))
-  "Face for python blocks") 
+;; (defface org-block-ipython
+;;   `((t (:background "thistle1")))
+;;   "Face for python blocks") 
 
-(defface org-block-jupyter-hy
-  `((t (:background "orange")))
-  "Face for hylang blocks")
+;; (defface org-block-jupyter-hy
+;;   `((t (:background "orange")))
+;;   "Face for hylang blocks")
 
-(defface org-block-sh
-  `((t (:background "gray90")))
-  "Face for python blocks")
+;; (defface org-block-sh
+;;   `((t (:background "gray90")))
+;;   "Face for python blocks")
 
 
 ;; * Latex Export settings
