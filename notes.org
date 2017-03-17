@@ -1,0 +1,18 @@
+** Change the theme from Zenburn to Leuven, do the following steps
+- [ ]  change the face color of the text wrapped by '$'
+uncomment this line:[[file:scimax-org.el::;;%20(set-face-foreground%20'org-latex-and-related%20"blue")]]
+
+- [ ] change theme back to leuven:
+
+uncomment this line:[[file:scimax.el::(load-theme%20'zenburn%20t)]]
+
+comment this line:[[file:scimax.el::(load-theme%20'zenburn%20t)]]
+
+-[ ] change the setting for smart line:
+uncomment this line:[[file:packages.el::;;%20(setq%20sml/theme%20'light)%20;Kitchin's%20choice]]
+comment out this line:[[file:packages.el::(setq%20sml/theme%20'respectful)%20;Qike's%20choice]]
+
+- [ ] change the color of code block background
+comment out this subtree: [[file:user/user.el::;;%20*%20code%20block%20background%20color%20in%20org-mode]]
+
+uncomment the corresponding lines from the original setting:[[file:scimax-org.el::;;%20(defface%20org-block-emacs-lisp]]

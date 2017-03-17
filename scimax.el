@@ -3,8 +3,8 @@
 ;;; Commentary:
 ;; 
 ;; * Basic settings
-(load-theme 'leuven)			;dislike Kitchin's choice
-;; (load-theme 'zenburn t)
+;; (load-theme 'leuven)			;dislike Kitchin's choice
+(load-theme 'zenburn t)
 ;; some words are highlited in blue, which is hard to see. Need to fix this later
 ;; (load-theme 'solarized-dark t)				;Qike's choice
 ;; (load-theme 'color-theme-sanityinc-solarized-dark t)				;Qike's choice
