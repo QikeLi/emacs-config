@@ -572,6 +572,17 @@
 	bibtex-autokey-titlewords 2
 	bibtex-autokey-titlewords-stretch 1
 	bibtex-autokey-titleword-length 5)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Qike's setting
+  ;; (defface org-ref-ref-face
+  ;; `((t (:inherit org-link :foreground "red1")))
+  ;; "Face for ref links in org-ref.")
+(defcustom org-ref-ref-color
+  "tomato1"
+  "Color of ref like links."
+  :type 'string
+  :group 'org-ref)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
   (global-set-key (kbd "H-b") 'org-ref-bibtex-hydra/body))
 
 

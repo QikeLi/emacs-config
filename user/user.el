@@ -318,7 +318,7 @@
   (add-hook 'ess-mode-hook 'whitespace-mode)
   (setq whitespace-mode t)  )
 ;; * code block background color in org-mode
-;; reassign the background colors of the code blocks
+;; * reassign the background colors of the code blocks
 (defface org-block-emacs-lisp
   `((t (:background "gray22")))
   "Face for elisp src blocks")
