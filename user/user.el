@@ -342,6 +342,24 @@
 (defface org-block-sh
   `((t (:background "gray22")))
   "Face for python blocks")
+;; * change color of script highlights in Latex mode
+;; Notes:
+;;   The following is originally defined in font-latex.el
+(defface font-latex-script-char-face
+  (let ((font (cond ((assq :inherit custom-face-attributes)
+		     '(:inherit underline))
+		    (t '(:underline t)))))
+    `((((class grayscale) (background light))
+       (:foreground "DarkGray" ,@font))
+      (((class grayscale) (background dark))
+       (:foreground "gray" ,@font))
+      (((class color) (background light))
+       (:foreground "salmon"))
+      (((class color) (background dark))
+       (:foreground "tomato1"))
+      (t (,@font))))
+  "Face used for the script chars ^ and _."
+  :group 'font-latex-highlighting-faces)
 
 ;; * Miscellaneous
 ;; ** set some variables
