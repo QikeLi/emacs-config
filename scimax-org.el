@@ -149,7 +149,9 @@ is positive, move after, and if negative, move before."
 	     (org-agenda-todo-ignore-deadlines nil)
 	     (org-deadline-warning-days 0)))
     ;; and last a global todo list
-    (todo "TODO"))))
+    (todo "TODO")
+    (todo "NEXT")
+    (todo "WAITING"))))
 
 ;; * Block templates
 ;; add <p for python expansion

@@ -190,12 +190,18 @@
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
-  ;; fix a problem caused by ergoemacs, that is, when move a subtree down, only the heading get moved
-  ;; After using scimax, this problem doesn't seem occur anymore. Now the key for org-move-subtree-down is "M-down", and for org-move-subtree-up is <M-up>
-  ;; (add-hook 'org-mode-hook
-  ;; 	    (lambda ()
-  ;; 	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
-  ;; 	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
+  ;; fix a problem caused by ergoemacs, that is only the heading
+  ;; get moved when moving a subtree
+  ;; 
+  ;; Note:
+  ;; After using scimax, this problem doesn't seem occur anymore.
+  ;; Now the key for org-move-subtree-down is "M-down",
+  ;; and for org-move-subtree-up is <M-up>
+  ;; Problem still exists (3/22/17)
+  (add-hook 'org-mode-hook
+  	    (lambda ()
+  	      (local-set-key (kbd "<M-S-down>") 'org-move-subtree-down)
+  	      (local-set-key  (kbd "<M-S-up>") 'org-move-subtree-up)))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -212,6 +218,7 @@
   (setq org-mobile-directory "~/Dropbox/MobileOrg")
   (setq org-mobile-inbox-for-pull (concat org-mobile-directory "/index.org"))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; set up block agenda
   ;; http://orgmode.org/manual/Custom-agenda-views.html#Custom-agenda-views  
@@ -248,7 +255,7 @@
    )
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+  
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
