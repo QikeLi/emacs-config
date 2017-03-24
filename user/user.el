@@ -363,18 +363,18 @@
 
 ;; * Miscellaneous
 ;; ** set some variables
-;; Turn on (flyspell-mode)
+;; *** Turn on (flyspell-mode)
 (flyspell-mode)				;; Note: force to turn this on when start up emacs since otherwise have trouble to load dictionary. see the issue I raised at scimax: https://github.com/jkitchin/scimax/issues/32
-;; Turn on agenda reminder
+;; *** Turn on agenda reminder
 (org-agenda-to-appt)
-;; Everyday at 12:05am run org-agenda-to-appt(useful in case you keep Emacs always on)
+;; *** Everyday at 12:05am run org-agenda-to-appt(useful in case you keep Emacs always on)
 (run-at-time "12:05am" (* 24 3600) 'org-agenda-to-appt)
-;; prvent start a new frame when open a file from Mac Finder
+;; *** prvent start a new frame when open a file from Mac Finder
 (setq ns-pop-up-frames nil)
-;; move files to ~/.Trash when delete
+;; m*** ove files to ~/.Trash when delete
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash")
-;; Turn off alarm sounds
+;; *** Turn off alarm sounds
 (setq ring-bell-function 'ignore)
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()
@@ -486,3 +486,16 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
 ;;               ;; Source: https://www.gnu.org/software/emacs/manual/html_node/elisp/Testing-Accessibility.html
 ;;               (message "%s" cmd)
 ;;               (shell-command cmd))))))))
+;; ** email
+;; I copied this configuration from this website: https://www.emacswiki.org/emacs/GnusGmail
+(setq gnus-select-method
+      '(nnimap "gmail"
+	       (nnimap-address "imap.gmail.com")  ; it could also be imap.googlemail.com if that's your server.
+	       (nnimap-server-port "imaps")
+	       (nnimap-stream ssl)))
+
+(setq smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-smtp-user "liqike"	   ;my email user name
+      user-mail-address "liqike@gmail.com" ;my email address
+      gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
