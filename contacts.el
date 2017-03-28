@@ -242,7 +242,7 @@ Loads cache file."
 
   ;; Add mu4e contacts if we have them
   (unless (and (featurep 'mu4e) (boundp 'mu4e~contacts))
-    (mu4e t))
+    (mu4e nil))
   
   (append contacts
 	  (loop for contact being the hash-key of mu4e~contacts

@@ -63,7 +63,12 @@
   	  ("j" "Journal" entry (file+datetree "~/Dropbox/orgFiles/journal.org")
   	   "* %?\nEntered on %U\n  %i\n  %a\n" :prepend t)
   	  ("h" "Habits" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Habits")
-  	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)))
+  	   "* TODO %^{Brief Description} %^g\n%?\n:PROPERTIES:\n:STYLE:    habit\n:END:\nAdded: %U" :prepend t)
+	  ("a" "Contacts" entry (file "~/Dropbox/orgFiles/qike-contacts/qike-contacts.org")
+	   "* %(org-contacts-template-name)
+:PROPERTIES:
+:EMAIL: %(org-contacts-template-email)
+:END:")))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; setup Babel
   ;; active Babel languages

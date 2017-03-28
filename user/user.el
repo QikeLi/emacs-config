@@ -360,6 +360,18 @@
       (t (,@font))))
   "Face used for the script chars ^ and _."
   :group 'font-latex-highlighting-faces)
+;; * contacts
+;; (use-package contacts
+;;   :ensure nil
+;;   :load-path scimax-dir)
+(use-package org-contacts
+  :ensure nil
+  :init
+  (defcustom org-contacts-files (list "~/Dropbox/orgFiles/qike-contacts/qike-contacts.org")
+    "List of Org files to use as contacts source.
+When set to nil, all your Org files will be used."
+    :type '(repeat file)
+    :group 'org-contacts))
 
 ;; * Miscellaneous
 ;; ** set some variables
