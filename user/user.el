@@ -372,7 +372,26 @@
 When set to nil, all your Org files will be used."
     :type '(repeat file)
     :group 'org-contacts))
+;; * Biometrics Journal template
+;; ** <<biometrics>>
+(add-to-list 'org-latex-classes '("biometrics-article"
+				  "\\documentclass[useAMS,referee]{biom}
+ [PACKAGES]
+ [EXTRA]"
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+;; * open with pacakge
+(use-package openwith
+  :config
+  (openwith-mode t)
+  (setq openwith-associations '(("\\.avi\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
+  			       ("\\.mkv\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
+  			       ("\\.mp4\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
+  			       ("\\.pdf\\'" "/Applications/Skim.app/Contents/MacOS/Skim" (file)))))
 ;; * Miscellaneous
 ;; ** set some variables
 ;; *** Turn on (flyspell-mode)
