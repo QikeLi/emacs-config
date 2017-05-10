@@ -391,7 +391,7 @@ When set to nil, all your Org files will be used."
   (openwith-mode t)
   (setq openwith-associations '(("\\.avi\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
   			       ("\\.mkv\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
-  			       ("\\.mp4\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
+  			       ("\\.mp4\\'" "/Applications/VLC.app/Contents/MacOS/VLC" (file))
   			       ("\\.pdf\\'" "/Applications/Skim.app/Contents/MacOS/Skim" (file)))))
 ;; * org-gcal
 ;; this setup sync the gcal.org file with my google calendar
