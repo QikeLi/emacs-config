@@ -186,9 +186,8 @@
 
   ;; Smart assign/underscore management
   (setq ess-smart-S-assign-key (kbd ";"))
-  ;; (ess-toggle-S-assign nil) ; note: this line was used to prevent underscore being assgin-key
-  ;; (ess-toggle-S-assign nil); note: this line was used to prevent underscore being assgin-key
-  ;; (ess-toggle-underscore nil) ; leave underscore key alone!
+  (ess-toggle-S-assign nil) ; note: this line was used to prevent underscore being assgin-key
+  (ess-toggle-underscore nil) ; leave underscore key alone!
   )
 
 
@@ -376,8 +375,10 @@ When set to nil, all your Org files will be used."
 ;; ** <<biometrics>>
 (add-to-list 'org-latex-classes '("biometrics-article"
 				  "\\documentclass[useAMS,referee]{biom}
+ [NO-DEFAULT-PACKAGES]
  [PACKAGES]
  [EXTRA]"
+				  ;; ("\\abstract{%s}" . "\\abstract*{%s}")
 				  ("\\section{%s}" . "\\section*{%s}")
 				  ("\\subsection{%s}" . "\\subsection*{%s}")
 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -392,6 +393,18 @@ When set to nil, all your Org files will be used."
   			       ("\\.mkv\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
   			       ("\\.mp4\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
   			       ("\\.pdf\\'" "/Applications/Skim.app/Contents/MacOS/Skim" (file)))))
+;; * org-gcal
+;; this setup sync the gcal.org file with my google calendar
+;; this setup follows the blog post that can be found here:http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WREgs4nyvWd
+(setq package-check-signature nil)
+(use-package org-gcal
+  :ensure t
+  :config
+  (setq org-gcal-client-id "89437206869-tvpubapoa49nh4ahoh8do3otu80sdihf.apps.googleusercontent.com"
+	org-gcal-client-secret "W63P3SAcpMU2wL-1nMZ4siQz"
+	org-gcal-file-alist '(("liqike@gmail.com" .  "~/Dropbox/orgFiles/gcal.org"))))
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 ;; * Miscellaneous
 ;; ** set some variables
 ;; *** Turn on (flyspell-mode)
@@ -532,7 +545,10 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 ;; to prevent line breaks in emails
-(defun no-auto-fill ()
-  "Turn off auto-fill-mode."
-  (auto-fill-mode -1))
-(add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
+;; (defun no-auto-fill ()
+;;   "Turn off auto-fill-mode."
+;;   (auto-fill-mode -1))
+;; (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
+
+
+(setq auto-fill-mode '(not mu4e-compose-mode))

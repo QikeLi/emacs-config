@@ -31,12 +31,14 @@
 
   ;; set capture templates
   (setq org-capture-templates
-  	'(("t" "Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tasks")
+  	'(("c" "Calendar" entry (file  "~/Dropbox/orgFiles/gcal.org" )
+	 "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
+	  ("t" "Tasks" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Tasks")
   	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
   	  ("d" "Dailies" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Dailies")
   	   "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
-  	  ("c" "Calendar" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Calendar")
-  	   "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
+  	  ;; ("c" "Calendar" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Calendar")
+  	  ;;  "* APPT %?\n%i\n:PROPERTIES:\n:REPEAT_TO_STATE: APPT\n:END:\n" :prepend t)
   	  ("p" "Projects" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Projects")
   	   "* %^{Brief Description} %^g\n%?\nAdded: %U" :prepend t)
   	  ;; ("w" "JSM" entry (file+headline "~/Dropbox/orgFiles/qikeMain.org" "Present simulation study @ JSM 2016")
@@ -160,7 +162,7 @@
   	(delq nil
   	      (mapcar (lambda (x) (and (file-exists-p x) x))
   		      '("~/Dropbox/orgFiles/qikeMain.org"
-  			"~/Dropbox/orgFiles/journal.org"))))
+  			"~/Dropbox/orgFiles/gcal.org"))))
   (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
