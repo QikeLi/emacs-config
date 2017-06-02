@@ -533,10 +533,10 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 ;; to prevent line breaks in emails
-;; (defun no-auto-fill ()
-;;   "Turn off auto-fill-mode."
-;;   (auto-fill-mode -1))
-;; (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
+(defun no-auto-fill ()
+  "Turn off auto-fill-mode."
+  (auto-fill-mode -1))
+(add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
 
 
-(setq auto-fill-mode '(not mu4e-compose-mode))
+;; (setq auto-fill-mode '(not mu4e-compose-mode))
