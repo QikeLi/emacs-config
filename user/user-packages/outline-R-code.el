@@ -32,7 +32,7 @@ This enables you to use tab to open and close outlines."
   (outline-minor-mode)
   (orgstruct-mode)
   (outline-show-branches))
-  
+
 (add-hook 'R-mode-hook
 	  #'R-outline-setup)
 

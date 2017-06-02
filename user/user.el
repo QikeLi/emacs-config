@@ -378,7 +378,9 @@ When set to nil, all your Org files will be used."
   			       ("\\.mkv\\'" "/Applications/mpv.app/Contents/MacOS/mpv" (file))
   			       ("\\.mp4\\'" "/Applications/VLC.app/Contents/MacOS/VLC" (file))
   			       ("\\.pdf\\'" "open" (file))
+			       ("\\.docx\\'" "open" (file))
 			       ("\\.html\\'" "open" (file)))))
+
 ;; * org-gcal
 ;; this setup sync the gcal.org file with my google calendar
 ;; this setup follows the blog post that can be found here:http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WREgs4nyvWd
