@@ -538,7 +538,4 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
 (defun no-auto-fill ()
   "Turn off auto-fill-mode."
   (auto-fill-mode -1))
-(add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
-
-
-;; (setq auto-fill-mode '(not mu4e-compose-mode))
+(add-hook 'message-mode-hook #'no-auto-fill)
