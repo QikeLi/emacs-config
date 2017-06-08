@@ -408,6 +408,8 @@ When set to nil, all your Org files will be used."
 (setq trash-directory "~/.Trash")
 ;; *** Turn off alarm sounds
 (setq ring-bell-function 'ignore)
+;; *** get my Menu key back
+(define-key key-translation-map (kbd "C-p") (kbd "<menu>"))
 ;; ** a function to open file at cursor
 (defun xah-open-file-at-cursor ()
   "Open the file path under cursor.
