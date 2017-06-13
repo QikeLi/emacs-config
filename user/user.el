@@ -393,6 +393,39 @@ When set to nil, all your Org files will be used."
 	org-gcal-file-alist '(("liqike@gmail.com" .  "~/Dropbox/orgFiles/gcal.org"))))
 (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
 (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+;; * publishing via org-mode
+;; Org Publish to Stat Blog to Jekyll config Added 12 June 2017
+;; http://orgmode.org/worg/org-tutorials/org-jekyll.html
+;; Thanks to Ian Barton
+(setq org-publish-project-alist
+   '(
+ ("org-Qike"
+     ;; Path to your org files.
+     :base-directory "~/Dropbox/GitHubPage-Qike/orgFiles/"
+     :base-extension "org"
+
+     ;; Path to your Jekyll project.
+     :publishing-directory "~/Dropbox/GitHubPage-Qike/jekyll/"
+     :recursive t
+     :publishing-function org-html-publish-to-html
+     :headline-levels 4 
+     :html-extension "html"
+     :body-only t ;; Only export section between <body> </body>
+     :section-number nil
+     :with-toc nil     			;do not display table of contents
+  )
+
+  ("org-static-Qike"
+     :base-directory "~/Dropbox/GitHubPage-Qike/orgFiles/"
+     :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+     :publishing-directory "~/Dropbox/GitHubPage-Qike/"
+     :recursive t
+     :publishing-function org-publish-attachment)
+
+  ("Qike-web" :components ("org-Qike" "org-static-Qike"))
+
+  ))
+
 ;; * Miscellaneous
 ;; ** set some variables
 ;; *** Turn on (flyspell-mode)
