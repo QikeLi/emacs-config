@@ -356,10 +356,23 @@
 When set to nil, all your Org files will be used."
     :type '(repeat file)
     :group 'org-contacts))
-;; * Biometrics Journal template
+;; * Journal templates for org exporting latex
 ;; ** <<biometrics>>
 (add-to-list 'org-latex-classes '("biometrics-article"
 				  "\\documentclass[useAMS,referee]{biom}
+ [NO-DEFAULT-PACKAGES]
+ [PACKAGES]
+ [EXTRA]"
+				  ;; ("\\abstract{%s}" . "\\abstract*{%s}")
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; ** <<Bioinformatics>>
+(add-to-list 'org-latex-classes '("bioinfo"
+				  "\\documentclass{bioinfo}
  [NO-DEFAULT-PACKAGES]
  [PACKAGES]
  [EXTRA]"
