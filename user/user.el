@@ -438,7 +438,14 @@ When set to nil, all your Org files will be used."
   ("Qike-web" :components ("org-Qike" "org-static-Qike"))
 
   ))
+;; * org-reveal
+(use-package ox-reveal
+  :ensure ox-reveal)
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+(setq org-reveal-mathjax t)
 
+(use-package htmlize
+  :ensure t)
 ;; * Miscellaneous
 ;; ** set some variables
 ;; *** Turn on (flyspell-mode)
@@ -566,6 +573,36 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
 ;;               ;; Source: https://www.gnu.org/software/emacs/manual/html_node/elisp/Testing-Accessibility.html
 ;;               (message "%s" cmd)
 ;;               (shell-command cmd))))))))
+;; ** a function to toggle window split
+;; I copied this function from https://www.emacswiki.org/emacs/ToggleWindowSplit,
+;; and I globally assigned a keybinding to this function
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+	     (next-win-buffer (window-buffer (next-window)))
+	     (this-win-edges (window-edges (selected-window)))
+	     (next-win-edges (window-edges (next-window)))
+	     (this-win-2nd (not (and (<= (car this-win-edges)
+					 (car next-win-edges))
+				     (<= (cadr this-win-edges)
+					 (cadr next-win-edges)))))
+	     (splitter
+	      (if (= (car this-win-edges)
+		     (car (window-edges (next-window))))
+		  'split-window-horizontally
+		'split-window-vertically)))
+	(delete-other-windows)
+	(let ((first-win (selected-window)))
+	  (funcall splitter)
+	  (if this-win-2nd (other-window 1))
+	  (set-window-buffer (selected-window) this-win-buffer)
+	  (set-window-buffer (next-window) next-win-buffer)
+	  (select-window first-win)
+	  (if this-win-2nd (other-window 1))))))
+
+(global-set-key (kbd "C-x |") 'toggle-window-split)
+
 ;; ** email
 ;; I copied this configuration from this website: https://www.emacswiki.org/emacs/GnusGmail
 (setq gnus-select-method
