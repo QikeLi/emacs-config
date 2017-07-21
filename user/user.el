@@ -186,8 +186,8 @@
 
   ;; Smart assign/underscore management
   (setq ess-smart-S-assign-key (kbd ";"))
-  (ess-toggle-S-assign nil) ; note: this line was used to prevent underscore being assgin-key
-  (ess-toggle-underscore nil) ; leave underscore key alone!
+  ;; (ess-toggle-S-assign nil) ; note: this line was used to prevent underscore being assgin-key
+  ;; (ess-toggle-underscore nil) ; leave underscore key alone!
   )
 
 
@@ -405,7 +405,7 @@ When set to nil, all your Org files will be used."
 	org-gcal-client-secret "W63P3SAcpMU2wL-1nMZ4siQz"
 	org-gcal-file-alist '(("liqike@gmail.com" .  "~/Dropbox/orgFiles/gcal.org"))))
 (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
-(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 ;; * publishing via org-mode
 ;; Org Publish to Stat Blog to Jekyll config Added 12 June 2017
 ;; http://orgmode.org/worg/org-tutorials/org-jekyll.html
