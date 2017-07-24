@@ -263,6 +263,7 @@
 
 
 ;; * polymode, which enables Rmarkdown
+;; Setup refers to https://github.com/jabranham/emacs-for-social-science/blob/master/init-emacs.org
 (use-package polymode
   :ensure t
   :mode
@@ -426,6 +427,8 @@ When set to nil, all your Org files will be used."
 (use-package htmlize
   :ensure t)
 ;; * Miscellaneous
+;; ** set line spacing
+(setq-default line-spacing 4)
 ;; ** set some variables
 ;; *** Turn on (flyspell-mode)
 (flyspell-mode)				;; Note: force to turn this on when start up emacs since otherwise have trouble to load dictionary. see the issue I raised at scimax: https://github.com/jkitchin/scimax/issues/32
