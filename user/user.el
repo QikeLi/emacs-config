@@ -605,3 +605,5 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
   "Turn off auto-fill-mode."
   (auto-fill-mode -1))
 (add-hook 'message-mode-hook #'no-auto-fill)
+;; ** to insert quotation pairs that surround selected text
+(global-set-key (kbd "s-'") 'insert-pair)
