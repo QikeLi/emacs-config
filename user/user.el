@@ -607,3 +607,12 @@ URL `http://ergoemacs.org/emacs/emacs_open_file_path_fast.html'"
 (add-hook 'message-mode-hook #'no-auto-fill)
 ;; ** to insert quotation pairs that surround selected text
 (global-set-key (kbd "s-'") 'insert-pair)
+;; ** A function to insert a pipe operator in R scripts.
+(defun then_R_operator ()
+  "R - %>% operator or 'then' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "%>%")
+  (reindent-then-newline-and-indent))
+(define-key ess-mode-map (kbd "C-%") 'then_R_operator)
+(define-key inferior-ess-mode-map (kbd "C-%") 'then_R_operator)
