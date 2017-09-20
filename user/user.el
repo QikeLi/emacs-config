@@ -384,8 +384,9 @@ When set to nil, all your Org files will be used."
   (setq org-gcal-client-id "89437206869-tvpubapoa49nh4ahoh8do3otu80sdihf.apps.googleusercontent.com"
 	org-gcal-client-secret "W63P3SAcpMU2wL-1nMZ4siQz"
 	org-gcal-file-alist '(("liqike@gmail.com" .  "~/Dropbox/orgFiles/gcal.org"))))
-(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
-;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+;; The following line is commented out according to: https://github.com/myuhe/org-gcal.el/issues/90#issuecomment-328640415
+;; (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) )) 
+(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 ;; * publishing via org-mode
 ;; Org Publish to Stat Blog to Jekyll config Added 12 June 2017
 ;; http://orgmode.org/worg/org-tutorials/org-jekyll.html
